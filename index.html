@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GCM - Sistema RP</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #07111f, #102d45);
+    color: white;
+}
+
+.container {
+    width: 92%;
+    max-width: 900px;
+    margin: auto;
+    padding: 30px 0;
+}
+
+/* CABEÇALHO */
+
+.header {
+    text-align: center;
+    padding: 30px 20px;
+    margin-bottom: 25px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+.header .icone {
+    font-size: 55px;
+}
+
+.header h1 {
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+.header p {
+    margin-top: 8px;
+    color: #b8c8d8;
+}
+
+/* CARDS */
+
+.card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.card h2 {
+    margin-bottom: 20px;
+}
+
+/* INPUTS */
+
+label {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    color: #cbd8e5;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 10px;
+    background: #f5f7fa;
+    color: #111;
+    font-size: 15px;
+}
+
+/* BOTÕES */
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    background: #1f8f5f;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.btn-secundario {
+    background: #31506b;
+}
+
+.btn-perigo {
+    background: #a63d3d;
+}
+
+/* TELAS */
+
+.tela {
+    display: none;
+}
+
+.tela.ativa {
+    display: block;
+}
+
+/* MENU */
+
+.menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.menu button {
+    margin-top: 0;
+}
+
+/* STATUS */
+
+.status {
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    background: rgba(255,255,255,0.08);
+}
+
+.aprovado {
+    color: #55e89b;
+    font-weight: bold;
+}
+
+.pendente {
+    color: #ffd166;
+    font-weight: bold;
+}
+
+.recusado {
+    color: #ff7777;
+    font-weight: bold;
+}
+
+/* PORTE */
+
+.porte {
+    border: 2px solid #c9a227;
+    border-radius: 18px;
+    padding: 25px;
+    background: rgba(201,162,39,0.08);
+}
+
+.porte h2 {
+    color: #e5c65b;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.linha {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.aviso {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.06);
+    color: #aebdcc;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* CORREGEDORIA */
+
+.solicitacao {
+    background: rgba(255,255,255,0.06);
+    padding: 18px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.solicitacao button {
+    margin-top: 10px;
+}
+
+/* RODAPÉ */
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #8193a5;
+    font-size: 12px;
+}
+
+@media(max-width:600px) {
+    .header h1 {
+        font-size: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- CABEÇALHO -->
+
+<div class="header">
+    <div class="icone">🛡️</div>
+    <h1>Guarda Civil Municipal</h1>
+    <p>Sistema Administrativo — Roleplay</p>
+</div>
+
+
+<!-- ================= LOGIN ================= -->
+
+<section id="login" class="tela ativa">
+
+<div class="card">
+
+<h2>🔐 Acesso ao Sistema</h2>
+
+<label>Usuário</label>
+<input id="loginUsuario" type="text" placeholder="Digite seu usuário">
+
+<label>Senha</label>
+<input id="loginSenha" type="password" placeholder="Digite sua senha">
+
+<button onclick="entrar()">
+    Entrar
+</button>
+
+<button class="btn-secundario" onclick="mostrar('cadastro')">
+    Criar Cadastro
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= CADASTRO ================= -->
+
+<section id="cadastro" class="tela">
+
+<div class="card">
+
+<h2>📝 Cadastro de Guarda</h2>
+
+<label>Nome completo</label>
+<input id="cadNome" type="text" placeholder="Nome completo">
+
+<label>RG</label>
+<input id="cadRG" type="text" placeholder="RG">
+
+<label>CPF</label>
+<input id="cadCPF" type="text" placeholder="CPF">
+
+<label>Usuário</label>
+<input id="cadUsuario" type="text" placeholder="Crie seu usuário">
+
+<label>Senha</label>
+<input id="cadSenha" type="password" placeholder="Crie sua senha">
+
+<button onclick="cadastrar()">
+    Enviar Cadastro
+</button>
+
+<button class="btn-secundario" onclick="mostrar('login')">
+    ← Voltar
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= PAINEL GUARDA ================= -->
+
+<section id="guarda" class="tela">
+
+<div class="card">
+
+<h2>🛡️ Painel do Guarda</h2>
+
+<div id="dadosGuarda"></div>
+
+<div class="status">
+    Status do cadastro:
+    <span id="statusGuarda" class="pendente">
+        AGUARDANDO APROVAÇÃO
+    </span>
+</div>
+
+<div class="menu">
+
+<button onclick="mostrar('solicitarPorte')">
+    🔫 Solicitar Porte
+</button>
+
+<button onclick="mostrar('meuPorte')">
+    🪪 Meu Porte
+</button>
+
+</div>
+
+<button class="btn-secundario" onclick="sair()">
+    Sair
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= SOLICITAR PORTE ================= -->
+
+<section id="solicitarPorte" class="tela">
+
+<div class="card">
+
+<h2>🔫 Solicitação de Porte de Arma</h2>
+
+<label>Nome completo</label>
+<input id="porteNome" type="text">
+
+<label>RG</label>
+<input id="porteRG" type="text">
+
+<label>CPF</label>
+<input id="porteCPF" type="text">
+
+<label>Tipo de porte</label>
+<input type="text" value="9mm — Beretta" disabled>
+
+<button onclick="solicitarPorte()">
+    Enviar para Análise
+</button>
+
+<button class="btn-secundario" onclick="mostrar('guarda')">
+    ← Voltar
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= MEU PORTE ================= -->
+
+<section id="meuPorte" class="tela">
+
+<div class="card">
+
+<div class="porte">
+
+<h2>🔫 PORTE DE ARMA — GCM</h2>
+
+<div class="linha">
+<strong>Guarda:</strong>
+<span id="porteGuarda"></span>
+</div>
+
+<div class="linha">
+<strong>RG:</strong>
+<span id="porteGuardaRG"></span>
+</div>
+
+<div class="linha">
+<strong>CPF:</strong>
+<span id="porteGuardaCPF"></span>
+</div>
+
+<div class="linha">
+<strong>Armamento:</strong>
+9mm — Beretta
+</div>
+
+<div class="linha">
+<strong>Status:</strong>
+<span class="aprovado">
+APROVADO
+</span>
+</div>
+
+</div>
+
+<div class="aviso">
+DOCUMENTO FICTÍCIO — USO EXCLUSIVO NO ROLEPLAY — SEM VALIDADE LEGAL.
+</div>
+
+<button class="btn-secundario" onclick="mostrar('guarda')">
+    ← Voltar
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= CORREGEDORIA ================= -->
+
+<section id="corregedoria" class="tela">
+
+<div class="card">
+
+<h2>⚖️ CORREGEDORIA — GCM</h2>
+
+<h3>📋 Cadastros Pendentes</h3>
+
+<div id="cadastrosPendentes">
+
+<p>Nenhum cadastro pendente.</p>
+
+</div>
+
+<hr style="margin:25px 0;border-color:#ffffff22;">
+
+<h3>🔫 Solicitações de Porte</h3>
+
+<div id="portesPendentes">
+
+<p>Nenhuma solicitação pendente.</p>
+
+</div>
+
+<button class="btn-secundario" onclick="sair()">
+    Sair
+</button>
+
+</div>
+
+</section>
+
+
+<footer>
+🛡️ GCM • Sistema fictício para Roleplay
+</footer>
+
+</div>
+
+
+<script>
+
+/* ================= DADOS TEMPORÁRIOS ================= */
+
+let guardaAtual = null;
+
+
+/* ================= TROCAR TELA ================= */
+
+function mostrar(id) {
+
+    document.querySelectorAll(".tela").forEach(function(tela) {
+        tela.classList.remove("ativa");
+    });
+
+    document.getElementById(id).classList.add("ativa");
+}
+
+
+/* ================= CADASTRO ================= */
+
+function cadastrar() {
+
+    const nome = document.getElementById("cadNome").value;
+    const rg = document.getElementById("cadRG").value;
+    const cpf = document.getElementById("cadCPF").value;
+    const usuario = document.getElementById("cadUsuario").value;
+    const senha = document.getElementById("cadSenha").value;
+
+    if (!nome || !rg || !cpf || !usuario || !senha) {
+        alert("Preencha todos os campos.");
+        return;
+    }
+
+    guardaAtual = {
+        nome: nome,
+        rg: rg,
+        cpf: cpf,
+        usuario: usuario,
+        senha: senha,
+        status: "pendente",
+        porte: false
+    };
+
+    alert("Cadastro enviado para a Corregedoria.");
+
+    mostrar("login");
+}
+
+
+/* ================= LOGIN ================= */
+
+function entrar() {
+
+    const usuario =
+        document.getElementById("loginUsuario").value;
+
+    const senha =
+        document.getElementById("loginSenha").value;
+
+
+    /* LOGIN DA CORREGEDORIA */
+
+    if (
+        usuario === "CGCM-2026" &&
+        senha === "CGCM-2026"
+    ) {
+
+        carregarCorregedoria();
+
+        mostrar("corregedoria");
+
+        return;
+    }
+
+
+    /* LOGIN DO GUARDA */
+
+    if (
+        guardaAtual &&
+        usuario === guardaAtual.usuario &&
+        senha === guardaAtual.senha
+    ) {
+
+        carregarGuarda();
+
+        mostrar("guarda");
+
+        return;
+    }
+
+
+    alert("Usuário ou senha incorretos.");
+}
+
+
+/* ================= PAINEL GUARDA ================= */
+
+function carregarGuarda() {
+
+    document.getElementById("dadosGuarda").innerHTML = `
+        <p><strong>Nome:</strong> ${guardaAtual.nome}</p>
+        <p><strong>RG:</strong> ${guardaAtual.rg}</p>
+        <p><strong>CPF:</strong> ${guardaAtual.cpf}</p>
+    `;
+
+    let status = document.getElementById("statusGuarda");
+
+    if (guardaAtual.status === "aprovado") {
+
+        status.textContent = "APROVADO";
+        status.className = "aprovado";
+
+    } else {
+
+        status.textContent = "AGUARDANDO APROVAÇÃO";
+        status.className = "pendente";
+    }
+
+
+    document.getElementById("porteGuarda").textContent =
+        guardaAtual.nome;
+
+    document.getElementById("porteGuardaRG").textContent =
+        guardaAtual.rg;
+
+    document.getElementById("porteGuardaCPF").textContent =
+        guardaAtual.cpf;
+}
+
+
+/* ================= CORREGEDORIA ================= */
+
+function carregarCorregedoria() {
+
+    const cadastros =
+        document.getElementById("cadastrosPendentes");
+
+    const portes =
+        document.getElementById("portesPendentes");
+
+
+    if (
+        guardaAtual &&
+        guardaAtual.status === "pendente"
+    ) {
+
+        cadastros.innerHTML = `
+
+        <div class="solicitacao">
+
+            <p><strong>Nome:</strong>
+            ${guardaAtual.nome}</p>
+
+            <p><strong>RG:</strong>
+            ${guardaAtual.rg}</p>
+
+            <p><strong>CPF:</strong>
+            ${guardaAtual.cpf}</p>
+
+            <button onclick="aprovarCadastro()">
+                ✅ Aprovar Cadastro
+            </button>
+
+            <button
+                class="btn-perigo"
+                onclick="recusarCadastro()">
+                ❌ Recusar
+            </button>
+
+        </div>
+
+        `;
+
+    } else {
+
+        cadastros.innerHTML =
+            "<p>Nenhum cadastro pendente.</p>";
+    }
+
+
+    if (
+        guardaAtual &&
+        guardaAtual.porte === "pendente"
+    ) {
+
+        portes.innerHTML = `
+
+        <div class="solicitacao">
+
+            <p><strong>Nome:</strong>
+            ${guardaAtual.nome}</p>
+
+            <p><strong>RG:</strong>
+            ${guardaAtual.rg}</p>
+
+            <p><strong>CPF:</strong>
+            ${guardaAtual.cpf}</p>
+
+            <p><strong>Armamento:</strong>
+            9mm — Beretta</p>
+
+            <button onclick="aprovarPorte()">
+                ✅ Aprovar Porte
+            </button>
+
+            <button
+                class="btn-perigo"
+                onclick="recusarPorte()">
+                ❌ Recusar
+            </button>
+
+        </div>
+
+        `;
+
+    } else {
+
+        portes.innerHTML =
+            "<p>Nenhuma solicitação pendente.</p>";
+    }
+}
+
+
+/* ================= APROVAR CADASTRO ================= */
+
+function aprovarCadastro() {
+
+    guardaAtual.status = "aprovado";
+
+    alert("Cadastro aprovado.");
+
+    carregarCorregedoria();
+}
+
+
+/* ================= RECUSAR CADASTRO ================= */
+
+function recusarCadastro() {
+
+    guardaAtual.status = "recusado";
+
+    alert("Cadastro recusado.");
+
+    carregarCorregedoria();
+}
+
+
+/* ================= SOLICITAR PORTE ================= */
+
+function solicitarPorte() {
+
+    if (!guardaAtual) return;
+
+    if (guardaAtual.status !== "aprovado") {
+
+        alert(
+            "Seu cadastro ainda não foi aprovado pela Corregedoria."
+        );
+
+        return;
+    }
+
+    guardaAtual.porte = "pendente";
+
+    alert(
+        "Solicitação de porte enviada para a Corregedoria."
+    );
+
+    mostrar("guarda");
+}
+
+
+/* ================= APROVAR PORTE ================= */
+
+function aprovarPorte() {
+
+    guardaAtual.porte = "aprovado";
+
+    alert("Porte aprovado.");
+
+    carregarCorregedoria();
+}
+
+
+/* ================= RECUSAR PORTE ================= */
+
+function recusarPorte() {
+
+    guardaAtual.porte = "recusado";
+
+    alert("Porte recusado.");
+
+    carregarCorregedoria();
+}
+
+
+/* ================= SAIR ================= */
+
+function sair() {
+
+    guardaAtual = null;
+
+    document.getElementById("loginUsuario").value = "";
+    document.getElementById("loginSenha").value = "";
+
+    mostrar("login");
+}
+
+</script>
+
+</body>
+</html>
