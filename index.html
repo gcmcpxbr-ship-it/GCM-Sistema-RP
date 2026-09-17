@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>GCM Sistema RP</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -13,14 +15,19 @@
     font-family:Arial,Helvetica,sans-serif;
 }
 
-body{
-    min-height:100vh;
-    background:
-        radial-gradient(circle at top,#172033 0%,#080b12 45%,#050608 100%);
-    color:#fff;
+html{
+    scroll-behavior:smooth;
 }
 
-button,input,select{
+body{
+    min-height:100vh;
+    color:#fff;
+    background:
+    radial-gradient(circle at top,#172033 0%,#080b12 48%,#050608 100%);
+}
+
+button,
+input{
     font:inherit;
 }
 
@@ -28,131 +35,190 @@ button{
     cursor:pointer;
 }
 
-.header{
-    padding:35px 20px 25px;
-    text-align:center;
-}
-
-.badge{
-    display:inline-block;
-    padding:7px 15px;
-    border:1px solid #ffffff25;
-    border-radius:30px;
-    background:#ffffff08;
-    color:#aebbd0;
-    font-size:12px;
-    letter-spacing:1px;
-    margin-bottom:15px;
-}
-
-.header h1{
-    font-size:36px;
-    margin-bottom:8px;
-}
-
-.header p{
-    color:#98a5b8;
-}
-
-.container{
-    width:min(1050px,92%);
-    margin:auto;
-    padding-bottom:50px;
-}
-
-.card{
-    background:rgba(15,20,30,.88);
-    border:1px solid #ffffff12;
-    border-radius:22px;
-    padding:28px;
-    box-shadow:0 20px 60px #0008;
-    backdrop-filter:blur(12px);
+a{
+    text-decoration:none;
+    color:inherit;
 }
 
 .hidden{
     display:none!important;
 }
 
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.header{
+    text-align:center;
+    padding:38px 20px 25px;
+}
+
+.header h1{
+    font-size:42px;
+    line-height:1.05;
+    margin-bottom:12px;
+}
+
+.header p{
+    color:#9da9bd;
+    font-size:20px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 16px;
+    border:1px solid #ffffff18;
+    border-radius:30px;
+    background:#ffffff08;
+    color:#aebbd0;
+    font-size:11px;
+    letter-spacing:1.5px;
+    margin-bottom:18px;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:min(1000px,92%);
+    margin:auto;
+    padding-bottom:50px;
+}
+
+.card{
+    background:rgba(13,18,28,.90);
+    border:1px solid #ffffff14;
+    border-radius:25px;
+    padding:30px;
+    box-shadow:0 25px 70px #0009;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
 .menu{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:16px;
+    gap:20px;
 }
 
-.menu button{
-    min-height:120px;
-    border:1px solid #ffffff12;
-    border-radius:18px;
-    background:linear-gradient(145deg,#151d2b,#0c111a);
-    color:white;
+.menu-button{
+    min-height:150px;
+    border-radius:22px;
+    border:1px solid #ffffff13;
+    background:
+    linear-gradient(145deg,#151d2b,#0c111a);
+    color:#fff;
     transition:.2s;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
-.menu button:hover{
-    transform:translateY(-3px);
-    border-color:#ffffff35;
-    background:linear-gradient(145deg,#1b2638,#0d131e);
+.menu-button:hover{
+    transform:translateY(-4px);
+    border-color:#ffffff30;
+}
+
+.menu-button:active{
+    transform:scale(.98);
 }
 
 .icon{
-    font-size:30px;
-    margin-bottom:10px;
+    font-size:42px;
+    margin-bottom:13px;
 }
 
-.menu strong{
+.menu-button strong{
     display:block;
-    font-size:17px;
+    font-size:23px;
 }
 
-.menu small{
+.menu-button small{
     display:block;
-    color:#8e9aae;
-    margin-top:6px;
+    color:#9aa6ba;
+    font-size:16px;
+    margin-top:8px;
 }
+
+
+/* =========================
+   TELAS
+========================= */
+
+.tela{
+    display:none;
+}
+
+.tela.ativa{
+    display:block;
+}
+
+
+/* =========================
+   TÍTULOS
+========================= */
 
 h2{
-    margin-bottom:8px;
+    font-size:28px;
+    margin-bottom:7px;
+}
+
+h3{
+    color:#fff;
 }
 
 .subtitle{
     color:#929eb0;
-    margin-bottom:22px;
+    margin-bottom:25px;
 }
+
+
+/* =========================
+   FORMULÁRIOS
+========================= */
 
 .form{
     display:grid;
-    gap:14px;
+    gap:16px;
 }
 
 label{
-    color:#b7c1d0;
-    font-size:13px;
+    color:#b9c3d2;
+    font-size:14px;
 }
 
-input,select{
+input{
     width:100%;
-    padding:14px 15px;
-    margin-top:6px;
-    border-radius:12px;
-    border:1px solid #ffffff14;
-    outline:none;
-    background:#080c13;
+    padding:15px;
+    margin-top:7px;
     color:#fff;
+    background:#080c13;
+    border:1px solid #ffffff16;
+    border-radius:12px;
+    outline:none;
 }
 
-input:focus,select:focus{
-    border-color:#64748b;
+input:focus{
+    border-color:#718096;
 }
 
 .primary{
     width:100%;
-    padding:14px;
+    padding:15px;
     border:0;
     border-radius:12px;
     background:#fff;
     color:#080a0e;
     font-weight:bold;
-    margin-top:5px;
+    margin-top:4px;
 }
 
 .primary:hover{
@@ -161,64 +227,120 @@ input:focus,select:focus{
 
 .secondary{
     width:100%;
-    padding:13px;
+    padding:14px;
     border:1px solid #ffffff18;
     border-radius:12px;
     background:#ffffff08;
-    color:white;
-    margin-top:10px;
+    color:#fff;
+    margin-top:4px;
 }
 
 .secondary:hover{
     background:#ffffff12;
 }
 
-.danger{
-    background:#35151a;
-    border-color:#66242c;
-}
 
-.success{
-    background:#132c20;
-    border-color:#23553b;
-}
+/* =========================
+   MENSAGENS
+========================= */
 
 .message{
-    padding:12px;
-    border-radius:10px;
+    padding:13px;
+    border-radius:11px;
     background:#ffffff08;
-    color:#cbd5e1;
+    margin-bottom:16px;
     font-size:14px;
-    margin-bottom:15px;
 }
 
 .error{
-    color:#ff9c9c;
+    color:#ff9b9b;
 }
 
 .ok{
     color:#8ff0b5;
 }
 
+
+/* =========================
+   TOPO DOS PAINÉIS
+========================= */
+
 .topbar{
     display:flex;
     justify-content:space-between;
     align-items:center;
     gap:15px;
-    margin-bottom:22px;
+    margin-bottom:25px;
 }
 
 .topbar button{
     width:auto;
-    padding:10px 15px;
     margin:0;
+    padding:11px 18px;
 }
+
+
+/* =========================
+   LISTAS
+========================= */
+
+.list{
+    display:grid;
+    gap:15px;
+}
+
+.item{
+    background:#080d15;
+    border:1px solid #ffffff11;
+    border-radius:17px;
+    padding:20px;
+}
+
+.item h3{
+    margin-bottom:10px;
+    font-size:19px;
+}
+
+.item p{
+    color:#9da9ba;
+    font-size:14px;
+    margin:5px 0;
+}
+
+.actions{
+    display:flex;
+    gap:10px;
+    margin-top:17px;
+}
+
+.actions button{
+    flex:1;
+    padding:12px;
+    border-radius:11px;
+    border:1px solid #ffffff16;
+    color:#fff;
+    background:#ffffff08;
+}
+
+.success{
+    background:#123321!important;
+}
+
+.danger{
+    background:#35151a!important;
+}
+
+
+/* =========================
+   STATUS
+========================= */
 
 .status{
     display:inline-block;
-    padding:6px 10px;
+    padding:7px 11px;
     border-radius:20px;
-    font-size:12px;
+    font-size:11px;
+    font-weight:bold;
 }
 
 .pending{
@@ -236,69 +358,39 @@ input:focus,select:focus{
     color:#ff9b9b;
 }
 
-.list{
-    display:grid;
-    gap:14px;
-}
 
-.item{
-    padding:18px;
-    border-radius:16px;
-    background:#080d15;
-    border:1px solid #ffffff10;
-}
-
-.item h3{
-    margin-bottom:8px;
-}
-
-.item p{
-    color:#9da9ba;
-    font-size:14px;
-    margin:4px 0;
-}
-
-.actions{
-    display:flex;
-    gap:8px;
-    margin-top:15px;
-}
-
-.actions button{
-    flex:1;
-    padding:11px;
-    border-radius:10px;
-    border:1px solid #ffffff15;
-    color:white;
-    background:#ffffff08;
-}
+/* =========================
+   AUTORIZAÇÃO
+========================= */
 
 .permit{
+    margin-top:18px;
+    padding:23px;
     border:1px solid #ffffff15;
     border-radius:18px;
-    padding:22px;
-    background:linear-gradient(145deg,#111a27,#080c13);
+    background:
+    linear-gradient(145deg,#111a27,#080c13);
 }
 
-.permit .title{
-    font-size:12px;
+.permit-title{
     color:#8996a9;
-    letter-spacing:1px;
-    margin-bottom:12px;
+    font-size:11px;
+    letter-spacing:1.5px;
 }
 
-.permit .weapon{
+.weapon{
     font-size:25px;
     font-weight:bold;
-    margin:10px 0 20px;
+    margin:12px 0 20px;
 }
 
-.permit .line{
-    padding:9px 0;
-    border-bottom:1px solid #ffffff0b;
+.line{
+    padding:10px 0;
+    border-bottom:1px solid #ffffff0c;
+    color:#cbd5e1;
 }
 
-.permit .line:last-child{
+.line:last-child{
     border-bottom:0;
 }
 
@@ -308,30 +400,53 @@ input:focus,select:focus{
     color:#7f8b9d;
 }
 
+
+/* =========================
+   RODAPÉ
+========================= */
+
 .footer{
     text-align:center;
     color:#596577;
     font-size:11px;
-    margin-top:30px;
-    line-height:1.6;
+    line-height:1.7;
+    margin-top:28px;
 }
 
+
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:700px){
-    .menu{
-        grid-template-columns:1fr;
+
+    .header{
+        padding-top:32px;
     }
 
     .header h1{
-        font-size:29px;
+        font-size:39px;
+    }
+
+    .header p{
+        font-size:19px;
     }
 
     .card{
         padding:20px;
     }
 
+    .menu{
+        grid-template-columns:1fr;
+    }
+
+    .menu-button{
+        min-height:150px;
+    }
+
     .topbar{
-        align-items:flex-start;
         flex-direction:column;
+        align-items:stretch;
     }
 
     .topbar button{
@@ -341,361 +456,814 @@ input:focus,select:focus{
     .actions{
         flex-direction:column;
     }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
+
+<!-- =====================================================
+     CABEÇALHO
+===================================================== -->
+
 <div class="header">
-    <div class="badge">SISTEMA OFICIAL • RP</div>
-    <h1>Guarda Civil Municipal</h1>
-    <p>Sistema administrativo para Roleplay</p>
+
+    <div class="badge">
+        SISTEMA OFICIAL • RP
+    </div>
+
+    <h1>
+        Guarda Civil<br>
+        Municipal
+    </h1>
+
+    <p>
+        Sistema administrativo para Roleplay
+    </p>
+
 </div>
+
 
 <div class="container">
 
-<!-- INÍCIO -->
-<section id="inicio" class="card">
+
+<!-- =====================================================
+     MENU PRINCIPAL
+===================================================== -->
+
+<section id="inicio" class="card tela ativa">
+
     <div class="menu">
 
-        <button type="button" id="btnEntrar">
-            <div class="icon">🔐</div>
-            <strong>Entrar</strong>
-            <small>Acessar sua conta</small>
-        </button>
 
-        <button type="button" id="btnCadastrar">
-            <div class="icon">📝</div>
-            <strong>Cadastrar</strong>
-            <small>Criar cadastro de guarda</small>
-        </button>
+        <!-- ENTRAR -->
 
-        <button type="button" id="btnCorregedoria">
-            <div class="icon">⚖️</div>
-            <strong>Corregedoria</strong>
-            <small>Painel administrativo</small>
-        </button>
+        <a
+            href="#"
+            class="menu-button"
+            onclick="abrirTela('login'); return false;"
+        >
+
+            <div class="icon">
+                🔐
+            </div>
+
+            <strong>
+                Entrar
+            </strong>
+
+            <small>
+                Acessar sua conta
+            </small>
+
+        </a>
+
+
+        <!-- CADASTRAR -->
+
+        <a
+            href="#"
+            class="menu-button"
+            onclick="abrirTela('cadastro'); return false;"
+        >
+
+            <div class="icon">
+                📝
+            </div>
+
+            <strong>
+                Cadastrar
+            </strong>
+
+            <small>
+                Criar cadastro de guarda
+            </small>
+
+        </a>
+
+
+        <!-- CORREGEDORIA -->
+
+        <a
+            href="#"
+            class="menu-button"
+            onclick="abrirTela('loginCorregedoria'); return false;"
+        >
+
+            <div class="icon">
+                ⚖️
+            </div>
+
+            <strong>
+                Corregedoria
+            </strong>
+
+            <small>
+                Painel administrativo
+            </small>
+
+        </a>
+
 
     </div>
+
 </section>
 
-<!-- LOGIN GUARDA -->
-<section id="login" class="card hidden">
 
-    <div class="topbar">
-        <div>
-            <h2>Login do Guarda</h2>
-            <p class="subtitle">Acesse sua conta do sistema</p>
-        </div>
-    </div>
+<!-- =====================================================
+     LOGIN GUARDA
+===================================================== -->
+
+<section
+    id="login"
+    class="card tela"
+>
+
+    <h2>
+        Login do Guarda
+    </h2>
+
+    <p class="subtitle">
+        Acesse sua conta do sistema.
+    </p>
 
     <div id="loginMsg"></div>
 
+
     <div class="form">
 
+
         <label>
+
             Usuário
-            <input id="loginUsuario" type="text" autocomplete="username">
+
+            <input
+                id="loginUsuario"
+                type="text"
+                autocomplete="username"
+            >
+
         </label>
+
 
         <label>
+
             Senha
-            <input id="loginSenha" type="password" autocomplete="current-password">
+
+            <input
+                id="loginSenha"
+                type="password"
+                autocomplete="current-password"
+            >
+
         </label>
 
-        <button type="button" class="primary" id="btnFazerLogin">
+
+        <button
+            type="button"
+            class="primary"
+            onclick="fazerLogin()"
+        >
             Entrar
         </button>
 
-        <button type="button" class="secondary" id="btnVoltarLogin">
+
+        <button
+            type="button"
+            class="secondary"
+            onclick="voltarInicio()"
+        >
             ← Voltar
         </button>
 
+
     </div>
+
 </section>
 
-<!-- CADASTRO -->
-<section id="cadastro" class="card hidden">
 
-    <h2>Cadastro de Guarda</h2>
+<!-- =====================================================
+     CADASTRO
+===================================================== -->
+
+<section
+    id="cadastro"
+    class="card tela"
+>
+
+    <h2>
+        Cadastro de Guarda
+    </h2>
+
     <p class="subtitle">
-        Preencha seus dados para solicitar acesso ao sistema.
+        Preencha seus dados para solicitar acesso.
     </p>
 
     <div id="cadastroMsg"></div>
 
+
     <div class="form">
 
+
         <label>
+
             Nome completo
-            <input id="cadNome" type="text">
+
+            <input
+                id="cadNome"
+                type="text"
+            >
+
         </label>
 
+
         <label>
+
             RG
-            <input id="cadRG" type="text">
+
+            <input
+                id="cadRG"
+                type="text"
+            >
+
         </label>
 
+
         <label>
+
             CPF
-            <input id="cadCPF" type="text">
+
+            <input
+                id="cadCPF"
+                type="text"
+            >
+
         </label>
 
+
         <label>
+
             Usuário
-            <input id="cadUsuario" type="text">
+
+            <input
+                id="cadUsuario"
+                type="text"
+            >
+
         </label>
+
 
         <label>
+
             Senha
-            <input id="cadSenha" type="password">
+
+            <input
+                id="cadSenha"
+                type="password"
+            >
+
         </label>
 
-        <button type="button" class="primary" id="btnFinalizarCadastro">
+
+        <button
+            type="button"
+            class="primary"
+            onclick="cadastrar()"
+        >
             Enviar cadastro
         </button>
 
-        <button type="button" class="secondary" id="btnVoltarCadastro">
+
+        <button
+            type="button"
+            class="secondary"
+            onclick="voltarInicio()"
+        >
             ← Voltar
         </button>
 
+
     </div>
+
 </section>
 
-<!-- CORREGEDORIA LOGIN -->
-<section id="loginCorregedoria" class="card hidden">
 
-    <h2>Corregedoria</h2>
-    <p class="subtitle">Acesso restrito ao setor administrativo.</p>
+<!-- =====================================================
+     LOGIN CORREGEDORIA
+===================================================== -->
+
+<section
+    id="loginCorregedoria"
+    class="card tela"
+>
+
+    <h2>
+        Corregedoria
+    </h2>
+
+    <p class="subtitle">
+        Acesso restrito ao setor administrativo.
+    </p>
 
     <div id="corMsg"></div>
 
+
     <div class="form">
 
+
         <label>
+
             Usuário
-            <input id="corUsuario" type="text">
+
+            <input
+                id="corUsuario"
+                type="text"
+            >
+
         </label>
+
 
         <label>
+
             Senha
-            <input id="corSenha" type="password">
+
+            <input
+                id="corSenha"
+                type="password"
+            >
+
         </label>
 
-        <button type="button" class="primary" id="btnEntrarCorregedoria">
+
+        <button
+            type="button"
+            class="primary"
+            onclick="entrarCorregedoria()"
+        >
             Acessar Corregedoria
         </button>
 
-        <button type="button" class="secondary" id="btnVoltarCor">
+
+        <button
+            type="button"
+            class="secondary"
+            onclick="voltarInicio()"
+        >
             ← Voltar
         </button>
 
+
     </div>
+
 </section>
 
-<!-- PAINEL GUARDA -->
-<section id="painelGuarda" class="card hidden">
+
+<!-- =====================================================
+     PAINEL GUARDA
+===================================================== -->
+
+<section
+    id="painelGuarda"
+    class="card tela"
+>
 
     <div class="topbar">
+
+
         <div>
-            <h2>Painel do Guarda</h2>
-            <p class="subtitle" id="guardaBemVindo"></p>
+
+            <h2>
+                Painel do Guarda
+            </h2>
+
+            <p
+                class="subtitle"
+                id="guardaBemVindo"
+            ></p>
+
         </div>
 
-        <button type="button" class="secondary" id="btnSairGuarda">
+
+        <button
+            type="button"
+            class="secondary"
+            onclick="sair()"
+        >
             Sair
         </button>
+
+
     </div>
+
 
     <div id="guardaConteudo"></div>
 
 </section>
 
-<!-- PAINEL CORREGEDORIA -->
-<section id="painelCorregedoria" class="card hidden">
+
+<!-- =====================================================
+     PAINEL CORREGEDORIA
+===================================================== -->
+
+<section
+    id="painelCorregedoria"
+    class="card tela"
+>
 
     <div class="topbar">
+
+
         <div>
-            <h2>⚖️ Corregedoria</h2>
+
+            <h2>
+                ⚖️ Corregedoria
+            </h2>
+
             <p class="subtitle">
                 Administração dos cadastros e autorizações.
             </p>
+
         </div>
 
-        <button type="button" class="secondary" id="btnSairCorregedoria">
+
+        <button
+            type="button"
+            class="secondary"
+            onclick="sair()"
+        >
             Sair
         </button>
+
+
     </div>
 
-    <h3 style="margin-bottom:12px;">Cadastros de Guardas</h3>
 
-    <div id="listaGuardas" class="list"></div>
+    <h3 style="margin-bottom:14px;">
+        Cadastros de Guardas
+    </h3>
+
+
+    <div
+        id="listaGuardas"
+        class="list"
+    ></div>
+
 
     <br>
+    <br>
 
-    <h3 style="margin-bottom:12px;">Solicitações de Porte</h3>
 
-    <div id="listaPorte" class="list"></div>
+    <h3 style="margin-bottom:14px;">
+        Solicitações de Armamento
+    </h3>
+
+
+    <div
+        id="listaPorte"
+        class="list"
+    ></div>
+
 
 </section>
 
+
+<!-- =====================================================
+     RODAPÉ
+===================================================== -->
+
 <div class="footer">
+
     SISTEMA FICTÍCIO PARA ROLEPLAY<br>
+
     NÃO POSSUI VALIDADE LEGAL • NÃO É DOCUMENTO OFICIAL
-</div>
 
 </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script>
-/* ================================
-   GCM SISTEMA RP
-   ================================ */
 
-const STORAGE = "GCM_GUARDAS";
-const SESSION = "GCM_SESSAO";
+/* =====================================================
+   CONFIGURAÇÃO
+===================================================== */
 
-/* ---------- BANCO LOCAL ---------- */
+const CHAVE_GUARDAS = "GCM_GUARDAS_RP";
 
-function getGuardas(){
+const CHAVE_SESSAO = "GCM_SESSAO_RP";
+
+
+/* =====================================================
+   PEGAR GUARDAS
+===================================================== */
+
+function pegarGuardas(){
+
     try{
-        return JSON.parse(localStorage.getItem(STORAGE)) || [];
-    }catch(e){
+
+        const dados =
+            localStorage.getItem(CHAVE_GUARDAS);
+
+        if(!dados){
+            return [];
+        }
+
+        const lista =
+            JSON.parse(dados);
+
+        return Array.isArray(lista)
+            ? lista
+            : [];
+
+    }catch(erro){
+
+        console.error(
+            "Erro ao carregar guardas:",
+            erro
+        );
+
         return [];
+
     }
+
 }
 
-function saveGuardas(lista){
-    localStorage.setItem(STORAGE, JSON.stringify(lista));
+
+/* =====================================================
+   SALVAR GUARDAS
+===================================================== */
+
+function salvarGuardas(lista){
+
+    try{
+
+        localStorage.setItem(
+            CHAVE_GUARDAS,
+            JSON.stringify(lista)
+        );
+
+        return true;
+
+    }catch(erro){
+
+        console.error(
+            "Erro ao salvar:",
+            erro
+        );
+
+        return false;
+
+    }
+
 }
 
-/* ---------- TELAS ---------- */
 
-const telas = [
-    "inicio",
-    "login",
-    "cadastro",
-    "loginCorregedoria",
-    "painelGuarda",
-    "painelCorregedoria"
-];
+/* =====================================================
+   ABRIR TELA
+===================================================== */
 
-function mostrar(id){
-    telas.forEach(t => {
-        document.getElementById(t).classList.add("hidden");
+function abrirTela(nome){
+
+    const telas = document.querySelectorAll(".tela");
+
+
+    telas.forEach(function(tela){
+
+        tela.classList.remove("ativa");
+
     });
 
-    document.getElementById(id).classList.remove("hidden");
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+    const tela =
+        document.getElementById(nome);
+
+
+    if(tela){
+
+        tela.classList.add("ativa");
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
 }
 
-/* ---------- MENSAGENS ---------- */
 
-function msg(id,text,tipo=""){
-    const el = document.getElementById(id);
+/* =====================================================
+   VOLTAR
+===================================================== */
+
+function voltarInicio(){
+
+    limparMensagens();
+
+    abrirTela("inicio");
+
+}
+
+
+/* =====================================================
+   LIMPAR MENSAGENS
+===================================================== */
+
+function limparMensagens(){
+
+    const login =
+        document.getElementById("loginMsg");
+
+    const cadastro =
+        document.getElementById("cadastroMsg");
+
+    const cor =
+        document.getElementById("corMsg");
+
+
+    if(login){
+        login.innerHTML="";
+    }
+
+    if(cadastro){
+        cadastro.innerHTML="";
+    }
+
+    if(cor){
+        cor.innerHTML="";
+    }
+
+}
+
+
+/* =====================================================
+   MENSAGEM
+===================================================== */
+
+function mostrarMensagem(
+    elemento,
+    texto,
+    tipo
+){
+
+    const el =
+        document.getElementById(elemento);
+
+
+    if(!el){
+        return;
+    }
+
 
     el.innerHTML =
-        `<div class="message ${tipo}">${text}</div>`;
+        '<div class="message '+tipo+'">'+
+        texto+
+        '</div>';
+
 }
 
-/* ---------- BOTÕES PRINCIPAIS ---------- */
 
-document.getElementById("btnEntrar").addEventListener("click",()=>{
-    document.getElementById("loginUsuario").value="";
-    document.getElementById("loginSenha").value="";
-    document.getElementById("loginMsg").innerHTML="";
-    mostrar("login");
-});
+/* =====================================================
+   CADASTRO
+===================================================== */
 
-document.getElementById("btnCadastrar").addEventListener("click",()=>{
-    document.getElementById("cadastroMsg").innerHTML="";
-    mostrar("cadastro");
-});
-
-document.getElementById("btnCorregedoria").addEventListener("click",()=>{
-    document.getElementById("corUsuario").value="";
-    document.getElementById("corSenha").value="";
-    document.getElementById("corMsg").innerHTML="";
-    mostrar("loginCorregedoria");
-});
-
-/* ---------- VOLTAR ---------- */
-
-document.getElementById("btnVoltarLogin").addEventListener("click",()=>{
-    mostrar("inicio");
-});
-
-document.getElementById("btnVoltarCadastro").addEventListener("click",()=>{
-    mostrar("inicio");
-});
-
-document.getElementById("btnVoltarCor").addEventListener("click",()=>{
-    mostrar("inicio");
-});
-
-/* ---------- CADASTRO ---------- */
-
-document.getElementById("btnFinalizarCadastro")
-.addEventListener("click",()=>{
+function cadastrar(){
 
     const nome =
-        document.getElementById("cadNome").value.trim();
+        document.getElementById(
+            "cadNome"
+        ).value.trim();
+
 
     const rg =
-        document.getElementById("cadRG").value.trim();
+        document.getElementById(
+            "cadRG"
+        ).value.trim();
+
 
     const cpf =
-        document.getElementById("cadCPF").value.trim();
+        document.getElementById(
+            "cadCPF"
+        ).value.trim();
+
 
     const usuario =
-        document.getElementById("cadUsuario").value.trim();
+        document.getElementById(
+            "cadUsuario"
+        ).value.trim();
+
 
     const senha =
-        document.getElementById("cadSenha").value;
+        document.getElementById(
+            "cadSenha"
+        ).value;
 
-    if(!nome || !rg || !cpf || !usuario || !senha){
-        msg(
+
+    if(
+        !nome ||
+        !rg ||
+        !cpf ||
+        !usuario ||
+        !senha
+    ){
+
+        mostrarMensagem(
             "cadastroMsg",
             "Preencha todos os campos.",
             "error"
         );
+
         return;
+
     }
 
-    const guardas = getGuardas();
 
-    const existe = guardas.some(
-        g => g.usuario.toLowerCase() === usuario.toLowerCase()
-    );
+    const guardas =
+        pegarGuardas();
 
-    if(existe){
-        msg(
+
+    const usuarioExiste =
+        guardas.some(
+            function(guarda){
+
+                return(
+                    String(guarda.usuario)
+                    .toLowerCase()
+                    ===
+                    usuario.toLowerCase()
+                );
+
+            }
+        );
+
+
+    if(usuarioExiste){
+
+        mostrarMensagem(
             "cadastroMsg",
             "Esse usuário já está cadastrado.",
             "error"
         );
+
         return;
+
     }
 
+
     const novoGuarda = {
-        id: Date.now().toString() + Math.random().toString(16).slice(2),
-        nome,
-        rg,
-        cpf,
-        usuario,
-        senha,
+
+        id:
+            Date.now().toString()
+            +
+            Math.random()
+            .toString(16)
+            .substring(2),
+
+        nome:nome,
+
+        rg:rg,
+
+        cpf:cpf,
+
+        usuario:usuario,
+
+        senha:senha,
+
         status:"pendente",
+
         porte:null,
-        criadoEm:new Date().toLocaleString("pt-BR")
+
+        data:
+            new Date()
+            .toLocaleString("pt-BR")
+
     };
+
 
     guardas.push(novoGuarda);
 
-    saveGuardas(guardas);
+
+    if(!salvarGuardas(guardas)){
+
+        mostrarMensagem(
+            "cadastroMsg",
+            "Não foi possível salvar o cadastro neste navegador.",
+            "error"
+        );
+
+        return;
+
+    }
+
 
     document.getElementById("cadNome").value="";
     document.getElementById("cadRG").value="";
@@ -703,306 +1271,71 @@ document.getElementById("btnFinalizarCadastro")
     document.getElementById("cadUsuario").value="";
     document.getElementById("cadSenha").value="";
 
-    msg(
+
+    mostrarMensagem(
         "cadastroMsg",
-        "Cadastro enviado com sucesso! Aguarde a análise da Corregedoria.",
+        "Cadastro enviado com sucesso! Aguarde a aprovação da Corregedoria.",
         "ok"
     );
-});
 
-/* ---------- LOGIN GUARDA ---------- */
+}
+
+
+/* =====================================================
+   LOGIN DO GUARDA
+===================================================== */
 
 function fazerLogin(){
 
     const usuario =
-        document.getElementById("loginUsuario").value.trim();
+        document.getElementById(
+            "loginUsuario"
+        ).value.trim();
+
 
     const senha =
-        document.getElementById("loginSenha").value;
+        document.getElementById(
+            "loginSenha"
+        ).value;
 
-    const guardas = getGuardas();
 
-    const guarda = guardas.find(
-        g =>
-            g.usuario.toLowerCase() === usuario.toLowerCase()
-            && g.senha === senha
-    );
+    if(!usuario || !senha){
 
-    if(!guarda){
-        msg(
+        mostrarMensagem(
             "loginMsg",
-            "Usuário ou senha incorretos.",
+            "Digite usuário e senha.",
             "error"
         );
-        return;
-    }
-
-    if(guarda.status !== "aprovado"){
-        if(guarda.status === "rejeitado"){
-            msg(
-                "loginMsg",
-                "Seu cadastro foi rejeitado pela Corregedoria.",
-                "error"
-            );
-        }else{
-            msg(
-                "loginMsg",
-                "Seu cadastro ainda está pendente de aprovação.",
-                "error"
-            );
-        }
 
         return;
+
     }
 
-    localStorage.setItem(
-        SESSION,
-        JSON.stringify({
-            tipo:"guarda",
-            id:guarda.id
-        })
-    );
 
-    abrirPainelGuarda(guarda.id);
-}
+    const guardas =
+        pegarGuardas();
 
-document.getElementById("btnFazerLogin")
-.addEventListener("click",fazerLogin);
-
-/* ---------- ENTER NO LOGIN ---------- */
-
-document.getElementById("loginSenha")
-.addEventListener("keydown",e=>{
-    if(e.key==="Enter"){
-        fazerLogin();
-    }
-});
-
-/* ---------- PAINEL GUARDA ---------- */
-
-function abrirPainelGuarda(id){
 
     const guarda =
-        getGuardas().find(g=>g.id===id);
+        guardas.find(
+            function(g){
+
+                return(
+                    String(g.usuario)
+                    .toLowerCase()
+                    ===
+                    usuario.toLowerCase()
+                    &&
+                    String(g.senha)
+                    ===
+                    senha
+                );
+
+            }
+        );
+
 
     if(!guarda){
-        localStorage.removeItem(SESSION);
-        mostrar("inicio");
-        return;
-    }
 
-    document.getElementById("guardaBemVindo").textContent =
-        `Bem-vindo, ${guarda.nome}`;
-
-    let html = "";
-
-    if(!guarda.porte){
-
-        html += `
-            <div class="item">
-                <h3>Autorização de Armamento</h3>
-                <p>
-                    Você está apto a solicitar uma autorização
-                    de armamento dentro do Roleplay.
-                </p>
-
-                <button
-                    type="button"
-                    class="primary"
-                    id="btnSolicitarPorte">
-                    Solicitar autorização
-                </button>
-            </div>
-        `;
-
-    }else{
-
-        html += `
-            <div class="item">
-                <h3>Solicitação de Armamento</h3>
-                <p>Status da solicitação:</p>
-                <br>
-                <span class="status ${guarda.porte.status}">
-                    ${textoStatus(guarda.porte.status)}
-                </span>
-        `;
-
-        if(guarda.porte.status==="aprovado"){
-
-            html += `
-                <br><br>
-
-                <div class="permit">
-
-                    <div class="title">
-                        AUTORIZAÇÃO DE ARMAMENTO • RP
-                    </div>
-
-                    <div class="weapon">
-                        9mm — Beretta
-                    </div>
-
-                    <div class="line">
-                        <strong>Nome:</strong> ${esc(guarda.nome)}
-                    </div>
-
-                    <div class="line">
-                        <strong>RG:</strong> ${esc(guarda.rg)}
-                    </div>
-
-                    <div class="line">
-                        <strong>CPF:</strong> ${esc(guarda.cpf)}
-                    </div>
-
-                    <div class="line">
-                        <strong>Arma:</strong> 9mm — Beretta
-                    </div>
-
-                    <div class="line">
-                        <strong>Status:</strong>
-                        <span class="status approved">
-                            APROVADO
-                        </span>
-                    </div>
-
-                    <div style="
-                        margin-top:15px;
-                        color:#718096;
-                        font-size:11px;
-                        text-align:center;
-                    ">
-                        DOCUMENTO FICTÍCIO — ROLEPLAY —
-                        SEM VALIDADE LEGAL
-                    </div>
-
-                </div>
-            `;
-
-        }else if(guarda.porte.status==="rejeitado"){
-
-            html += `
-                <p style="margin-top:15px;color:#ff9b9b;">
-                    A solicitação foi rejeitada pela Corregedoria.
-                </p>
-            `;
-        }
-
-        html += `</div>`;
-    }
-
-    document.getElementById("guardaConteudo").innerHTML = html;
-
-    const btn =
-        document.getElementById("btnSolicitarPorte");
-
-    if(btn){
-        btn.addEventListener("click",solicitarPorte);
-    }
-
-    mostrar("painelGuarda");
-}
-
-/* ---------- SOLICITAR PORTE ---------- */
-
-function solicitarPorte(){
-
-    const sessao =
-        JSON.parse(localStorage.getItem(SESSION));
-
-    if(!sessao || sessao.tipo!=="guarda") return;
-
-    const guardas = getGuardas();
-
-    const index =
-        guardas.findIndex(g=>g.id===sessao.id);
-
-    if(index===-1) return;
-
-    guardas[index].porte = {
-        tipo:"9mm — Beretta",
-        status:"pendente",
-        solicitadoEm:new Date().toLocaleString("pt-BR")
-    };
-
-    saveGuardas(guardas);
-
-    abrirPainelGuarda(sessao.id);
-}
-
-/* ---------- CORREGEDORIA ---------- */
-
-function entrarCorregedoria(){
-
-    const usuario =
-        document.getElementById("corUsuario").value.trim();
-
-    const senha =
-        document.getElementById("corSenha").value;
-
-    if(
-        usuario !== "GCGM-2026" ||
-        senha !== "GCGM-2026"
-    ){
-        msg(
-            "corMsg",
-            "Usuário ou senha da Corregedoria incorretos.",
-            "error"
-        );
-        return;
-    }
-
-    localStorage.setItem(
-        SESSION,
-        JSON.stringify({
-            tipo:"corregedoria"
-        })
-    );
-
-    carregarCorregedoria();
-}
-
-document.getElementById("btnEntrarCorregedoria")
-.addEventListener("click",entrarCorregedoria);
-
-document.getElementById("corSenha")
-.addEventListener("keydown",e=>{
-    if(e.key==="Enter"){
-        entrarCorregedoria();
-    }
-});
-
-/* ---------- PAINEL CORREGEDORIA ---------- */
-
-function carregarCorregedoria(){
-
-    const guardas = getGuardas();
-
-    const listaGuardas =
-        document.getElementById("listaGuardas");
-
-    const listaPorte =
-        document.getElementById("listaPorte");
-
-    /* CADASTROS */
-
-    const pendentes =
-        guardas.filter(g=>g.status==="pendente");
-
-    if(pendentes.length===0){
-
-        listaGuardas.innerHTML =
-            `<div class="empty">
-                Nenhum cadastro pendente.
-            </div>`;
-
-    }else{
-
-        listaGuardas.innerHTML =
-            pendentes.map(g=>`
-
-                <div class="item">
-
-                    <h3>${esc(g.nome)}</h3>
-
-                    <p><strong>RG:</strong> ${esc(g.rg)}</p>
-                    
+        mostrarMensagem(
+            "loginM
