@@ -3,1390 +3,1006 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GCM • Sistema RP</title>
+<title>GCM Sistema RP</title>
 
 <style>
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  min-height:100vh;
-  color:#fff;
-  background:
-    radial-gradient(circle at top,#16385c 0%,#081525 45%,#030811 100%);
+    min-height:100vh;
+    background:
+        radial-gradient(circle at top,#172033 0%,#080b12 45%,#050608 100%);
+    color:#fff;
 }
 
-.container{
-  width:92%;
-  max-width:1100px;
-  margin:auto;
+button,input,select{
+    font:inherit;
 }
 
-header{
-  text-align:center;
-  padding:40px 15px 20px;
+button{
+    cursor:pointer;
 }
 
-.logoFake{
-  width:95px;
-  height:95px;
-  margin:auto;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:42px;
-  background:linear-gradient(145deg,#d7ad45,#8d6820);
-  box-shadow:0 0 35px #0009;
-}
-
-header h1{
-  margin-top:15px;
-  font-size:30px;
-  font-weight:900;
-}
-
-header p{
-  color:#aebbd0;
-  margin-top:5px;
-}
-
-.screen{
-  display:none;
-  padding:20px 0 50px;
-}
-
-.screen.active{
-  display:block;
-}
-
-.card{
-  background:linear-gradient(145deg,#10263e,#081625);
-  border:1px solid #ffffff15;
-  border-radius:20px;
-  padding:25px;
-  margin-bottom:18px;
-  box-shadow:0 18px 50px #0006;
-}
-
-.center{
-  text-align:center;
-}
-
-h2{
-  margin-bottom:8px;
-}
-
-h3{
-  margin-bottom:10px;
-}
-
-.sub{
-  color:#aebbd0;
-  line-height:1.5;
-}
-
-label{
-  display:block;
-  color:#aebbd0;
-  font-size:13px;
-  margin:15px 0 6px;
-}
-
-input,select{
-  width:100%;
-  padding:14px;
-  border-radius:11px;
-  border:1px solid #ffffff1c;
-  background:#050d18;
-  color:white;
-  outline:none;
-}
-
-input:focus,select:focus{
-  border-color:#d7ad45;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  gap:15px;
-}
-
-.actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:18px;
-}
-
-.btn{
-  border:none;
-  padding:13px 18px;
-  border-radius:11px;
-  font-weight:bold;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.btn:hover{
-  transform:translateY(-2px);
-  filter:brightness(1.1);
-}
-
-.primary{
-  background:linear-gradient(135deg,#d7ad45,#f1d276);
-  color:#111;
-}
-
-.secondary{
-  background:#193450;
-  color:#fff;
-}
-
-.success{
-  background:#2fc77d;
-  color:#062015;
-}
-
-.danger{
-  background:#d9534f;
-  color:#fff;
-}
-
-.alert{
-  margin-top:15px;
-  padding:13px;
-  border-radius:10px;
-  background:#ffffff09;
-  border:1px solid #ffffff15;
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
-  gap:15px;
-  margin-bottom:20px;
-}
-
-.stat{
-  padding:20px;
-  border-radius:16px;
-  background:#ffffff08;
-  border:1px solid #ffffff12;
-}
-
-.stat span{
-  color:#aebbd0;
-  font-size:13px;
-}
-
-.stat strong{
-  display:block;
-  font-size:32px;
-  margin-top:8px;
-  color:#f1d276;
-}
-
-.item{
-  padding:17px;
-  border-radius:15px;
-  background:#ffffff06;
-  border:1px solid #ffffff12;
-  margin:12px 0;
-}
-
-.item strong{
-  font-size:17px;
-}
-
-.item small{
-  display:block;
-  color:#9eacc0;
-  margin-top:6px;
+.header{
+    padding:35px 20px 25px;
+    text-align:center;
 }
 
 .badge{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:20px;
-  background:#ffffff10;
-  font-size:12px;
-  margin-top:7px;
+    display:inline-block;
+    padding:7px 15px;
+    border:1px solid #ffffff25;
+    border-radius:30px;
+    background:#ffffff08;
+    color:#aebbd0;
+    font-size:12px;
+    letter-spacing:1px;
+    margin-bottom:15px;
 }
 
-.pending{
-  color:#f1d276;
+.header h1{
+    font-size:36px;
+    margin-bottom:8px;
 }
 
-.approved{
-  color:#35d187;
+.header p{
+    color:#98a5b8;
 }
 
-.rejected{
-  color:#ff7773;
+.container{
+    width:min(1050px,92%);
+    margin:auto;
+    padding-bottom:50px;
 }
 
-.permit{
-  border:1px solid #d7ad45;
-  border-radius:18px;
-  padding:25px;
-  background:linear-gradient(145deg,#182e48,#081625);
-  margin-top:20px;
+.card{
+    background:rgba(15,20,30,.88);
+    border:1px solid #ffffff12;
+    border-radius:22px;
+    padding:28px;
+    box-shadow:0 20px 60px #0008;
+    backdrop-filter:blur(12px);
 }
 
-.permit h2{
-  color:#f1d276;
+.hidden{
+    display:none!important;
 }
 
-.permitRow{
-  padding:11px 0;
-  border-bottom:1px solid #ffffff12;
+.menu{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
 }
 
-.permitRow span{
-  color:#9eacc0;
-  display:block;
-  font-size:12px;
+.menu button{
+    min-height:120px;
+    border:1px solid #ffffff12;
+    border-radius:18px;
+    background:linear-gradient(145deg,#151d2b,#0c111a);
+    color:white;
+    transition:.2s;
 }
 
-.permitRow strong{
-  display:block;
-  margin-top:3px;
+.menu button:hover{
+    transform:translateY(-3px);
+    border-color:#ffffff35;
+    background:linear-gradient(145deg,#1b2638,#0d131e);
 }
 
-.empty{
-  text-align:center;
-  color:#8291a7;
-  padding:20px;
+.icon{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.menu strong{
+    display:block;
+    font-size:17px;
+}
+
+.menu small{
+    display:block;
+    color:#8e9aae;
+    margin-top:6px;
+}
+
+h2{
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:#929eb0;
+    margin-bottom:22px;
+}
+
+.form{
+    display:grid;
+    gap:14px;
+}
+
+label{
+    color:#b7c1d0;
+    font-size:13px;
+}
+
+input,select{
+    width:100%;
+    padding:14px 15px;
+    margin-top:6px;
+    border-radius:12px;
+    border:1px solid #ffffff14;
+    outline:none;
+    background:#080c13;
+    color:#fff;
+}
+
+input:focus,select:focus{
+    border-color:#64748b;
+}
+
+.primary{
+    width:100%;
+    padding:14px;
+    border:0;
+    border-radius:12px;
+    background:#fff;
+    color:#080a0e;
+    font-weight:bold;
+    margin-top:5px;
+}
+
+.primary:hover{
+    opacity:.9;
+}
+
+.secondary{
+    width:100%;
+    padding:13px;
+    border:1px solid #ffffff18;
+    border-radius:12px;
+    background:#ffffff08;
+    color:white;
+    margin-top:10px;
+}
+
+.secondary:hover{
+    background:#ffffff12;
+}
+
+.danger{
+    background:#35151a;
+    border-color:#66242c;
+}
+
+.success{
+    background:#132c20;
+    border-color:#23553b;
+}
+
+.message{
+    padding:12px;
+    border-radius:10px;
+    background:#ffffff08;
+    color:#cbd5e1;
+    font-size:14px;
+    margin-bottom:15px;
+}
+
+.error{
+    color:#ff9c9c;
+}
+
+.ok{
+    color:#8ff0b5;
 }
 
 .topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:22px;
 }
 
-.notice{
-  border-left:4px solid #d7ad45;
-  padding:13px;
-  background:#ffffff06;
-  color:#aebbd0;
-  font-size:12px;
+.topbar button{
+    width:auto;
+    padding:10px 15px;
+    margin:0;
 }
 
-footer{
-  text-align:center;
-  padding:25px;
-  color:#65758c;
-  font-size:11px;
+.status{
+    display:inline-block;
+    padding:6px 10px;
+    border-radius:20px;
+    font-size:12px;
 }
 
-@media(max-width:600px){
-  header h1{
-    font-size:24px;
-  }
+.pending{
+    background:#3b2d10;
+    color:#ffd86b;
+}
 
-  .card{
+.approved{
+    background:#123422;
+    color:#8ff0b5;
+}
+
+.rejected{
+    background:#38161b;
+    color:#ff9b9b;
+}
+
+.list{
+    display:grid;
+    gap:14px;
+}
+
+.item{
     padding:18px;
-  }
+    border-radius:16px;
+    background:#080d15;
+    border:1px solid #ffffff10;
+}
 
-  .actions .btn{
-    width:100%;
-  }
+.item h3{
+    margin-bottom:8px;
+}
+
+.item p{
+    color:#9da9ba;
+    font-size:14px;
+    margin:4px 0;
+}
+
+.actions{
+    display:flex;
+    gap:8px;
+    margin-top:15px;
+}
+
+.actions button{
+    flex:1;
+    padding:11px;
+    border-radius:10px;
+    border:1px solid #ffffff15;
+    color:white;
+    background:#ffffff08;
+}
+
+.permit{
+    border:1px solid #ffffff15;
+    border-radius:18px;
+    padding:22px;
+    background:linear-gradient(145deg,#111a27,#080c13);
+}
+
+.permit .title{
+    font-size:12px;
+    color:#8996a9;
+    letter-spacing:1px;
+    margin-bottom:12px;
+}
+
+.permit .weapon{
+    font-size:25px;
+    font-weight:bold;
+    margin:10px 0 20px;
+}
+
+.permit .line{
+    padding:9px 0;
+    border-bottom:1px solid #ffffff0b;
+}
+
+.permit .line:last-child{
+    border-bottom:0;
+}
+
+.empty{
+    text-align:center;
+    padding:35px;
+    color:#7f8b9d;
+}
+
+.footer{
+    text-align:center;
+    color:#596577;
+    font-size:11px;
+    margin-top:30px;
+    line-height:1.6;
+}
+
+@media(max-width:700px){
+    .menu{
+        grid-template-columns:1fr;
+    }
+
+    .header h1{
+        font-size:29px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .topbar{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .topbar button{
+        width:100%;
+    }
+
+    .actions{
+        flex-direction:column;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logoFake">🛡️</div>
-  <h1>GUARDA CIVIL MUNICIPAL</h1>
-  <p>Sistema Administrativo • ROLEPLAY</p>
-</header>
+<div class="header">
+    <div class="badge">SISTEMA OFICIAL • RP</div>
+    <h1>Guarda Civil Municipal</h1>
+    <p>Sistema administrativo para Roleplay</p>
+</div>
 
 <div class="container">
 
-<!-- LOGIN -->
-<section id="login" class="screen active">
+<!-- INÍCIO -->
+<section id="inicio" class="card">
+    <div class="menu">
 
-  <div class="card">
+        <button type="button" id="btnEntrar">
+            <div class="icon">🔐</div>
+            <strong>Entrar</strong>
+            <small>Acessar sua conta</small>
+        </button>
 
-    <div class="center">
-      <h2>Acesso ao Sistema</h2>
-      <p class="sub">Entre com seu usuário e senha.</p>
+        <button type="button" id="btnCadastrar">
+            <div class="icon">📝</div>
+            <strong>Cadastrar</strong>
+            <small>Criar cadastro de guarda</small>
+        </button>
+
+        <button type="button" id="btnCorregedoria">
+            <div class="icon">⚖️</div>
+            <strong>Corregedoria</strong>
+            <small>Painel administrativo</small>
+        </button>
+
     </div>
+</section>
 
-    <label>Usuário</label>
-    <input id="loginUser" type="text">
+<!-- LOGIN GUARDA -->
+<section id="login" class="card hidden">
 
-    <label>Senha</label>
-    <input id="loginPass" type="password">
-
-    <div class="actions">
-
-      <button class="btn primary" onclick="loginGuard()">
-        Entrar
-      </button>
-
-      <button class="btn secondary" onclick="show('register')">
-        Criar Cadastro
-      </button>
-
-      <button class="btn secondary" onclick="show('corregLogin')">
-        Corregedoria
-      </button>
-
+    <div class="topbar">
+        <div>
+            <h2>Login do Guarda</h2>
+            <p class="subtitle">Acesse sua conta do sistema</p>
+        </div>
     </div>
 
     <div id="loginMsg"></div>
 
-  </div>
+    <div class="form">
 
-  <div class="notice">
-    ⚠️ SISTEMA FICTÍCIO — ROLEPLAY — SEM VALIDADE JURÍDICA OU ADMINISTRATIVA.
-  </div>
+        <label>
+            Usuário
+            <input id="loginUsuario" type="text" autocomplete="username">
+        </label>
 
+        <label>
+            Senha
+            <input id="loginSenha" type="password" autocomplete="current-password">
+        </label>
+
+        <button type="button" class="primary" id="btnFazerLogin">
+            Entrar
+        </button>
+
+        <button type="button" class="secondary" id="btnVoltarLogin">
+            ← Voltar
+        </button>
+
+    </div>
 </section>
-
 
 <!-- CADASTRO -->
-<section id="register" class="screen">
-
-  <button class="btn secondary" onclick="show('login')">
-    ← Voltar
-  </button>
-
-  <div class="card">
+<section id="cadastro" class="card hidden">
 
     <h2>Cadastro de Guarda</h2>
-
-    <p class="sub">
-      Preencha os dados abaixo para enviar seu cadastro à Corregedoria.
+    <p class="subtitle">
+        Preencha seus dados para solicitar acesso ao sistema.
     </p>
 
-    <div class="grid">
+    <div id="cadastroMsg"></div>
 
-      <div>
-        <label>Nome completo</label>
-        <input id="rNome">
-      </div>
+    <div class="form">
 
-      <div>
-        <label>RG</label>
-        <input id="rRg">
-      </div>
+        <label>
+            Nome completo
+            <input id="cadNome" type="text">
+        </label>
 
-      <div>
-        <label>CPF</label>
-        <input id="rCpf">
-      </div>
+        <label>
+            RG
+            <input id="cadRG" type="text">
+        </label>
 
-      <div>
-        <label>Usuário</label>
-        <input id="rUser">
-      </div>
+        <label>
+            CPF
+            <input id="cadCPF" type="text">
+        </label>
 
-      <div>
-        <label>Senha</label>
-        <input id="rPass" type="password">
-      </div>
+        <label>
+            Usuário
+            <input id="cadUsuario" type="text">
+        </label>
+
+        <label>
+            Senha
+            <input id="cadSenha" type="password">
+        </label>
+
+        <button type="button" class="primary" id="btnFinalizarCadastro">
+            Enviar cadastro
+        </button>
+
+        <button type="button" class="secondary" id="btnVoltarCadastro">
+            ← Voltar
+        </button>
 
     </div>
+</section>
 
-    <div class="actions">
+<!-- CORREGEDORIA LOGIN -->
+<section id="loginCorregedoria" class="card hidden">
 
-      <button class="btn primary" onclick="register()">
-        Enviar Cadastro
-      </button>
+    <h2>Corregedoria</h2>
+    <p class="subtitle">Acesso restrito ao setor administrativo.</p>
+
+    <div id="corMsg"></div>
+
+    <div class="form">
+
+        <label>
+            Usuário
+            <input id="corUsuario" type="text">
+        </label>
+
+        <label>
+            Senha
+            <input id="corSenha" type="password">
+        </label>
+
+        <button type="button" class="primary" id="btnEntrarCorregedoria">
+            Acessar Corregedoria
+        </button>
+
+        <button type="button" class="secondary" id="btnVoltarCor">
+            ← Voltar
+        </button>
 
     </div>
+</section>
 
-    <div id="registerMsg"></div>
+<!-- PAINEL GUARDA -->
+<section id="painelGuarda" class="card hidden">
 
-  </div>
+    <div class="topbar">
+        <div>
+            <h2>Painel do Guarda</h2>
+            <p class="subtitle" id="guardaBemVindo"></p>
+        </div>
+
+        <button type="button" class="secondary" id="btnSairGuarda">
+            Sair
+        </button>
+    </div>
+
+    <div id="guardaConteudo"></div>
 
 </section>
 
+<!-- PAINEL CORREGEDORIA -->
+<section id="painelCorregedoria" class="card hidden">
 
-<!-- CADASTRO ENVIADO -->
-<section id="registered" class="screen">
+    <div class="topbar">
+        <div>
+            <h2>⚖️ Corregedoria</h2>
+            <p class="subtitle">
+                Administração dos cadastros e autorizações.
+            </p>
+        </div>
 
-  <div class="card center">
+        <button type="button" class="secondary" id="btnSairCorregedoria">
+            Sair
+        </button>
+    </div>
 
-    <h2>✓ Cadastro enviado!</h2>
+    <h3 style="margin-bottom:12px;">Cadastros de Guardas</h3>
 
-    <p class="sub">
-      Seu cadastro foi enviado para análise da Corregedoria.
-    </p>
+    <div id="listaGuardas" class="list"></div>
 
     <br>
 
-    <p class="sub">
-      Aguarde a aprovação para acessar as funções liberadas.
-    </p>
+    <h3 style="margin-bottom:12px;">Solicitações de Porte</h3>
 
-    <div class="actions">
-
-      <button class="btn primary" onclick="show('login')">
-        Voltar ao Login
-      </button>
-
-    </div>
-
-  </div>
+    <div id="listaPorte" class="list"></div>
 
 </section>
 
-
-<!-- LOGIN CORREGEDORIA -->
-<section id="corregLogin" class="screen">
-
-  <button class="btn secondary" onclick="show('login')">
-    ← Voltar
-  </button>
-
-  <div class="card">
-
-    <div class="center">
-      <h2>🛡️ Corregedoria</h2>
-      <p class="sub">
-        Acesso exclusivo ao painel administrativo.
-      </p>
-    </div>
-
-    <label>Usuário</label>
-    <input id="cgUser" type="text">
-
-    <label>Senha</label>
-    <input id="cgPass" type="password">
-
-    <div class="actions">
-
-      <button class="btn primary" onclick="loginCG()">
-        Entrar na Corregedoria
-      </button>
-
-    </div>
-
-    <div id="cgMsg"></div>
-
-  </div>
-
-</section>
-
-
-<!-- PAINEL GUARDA -->
-<section id="guard" class="screen">
-
-  <div class="topbar">
-
-    <div>
-      <h2>Área do Guarda</h2>
-      <span id="guardStatus" class="badge"></span>
-    </div>
-
-    <button class="btn secondary" onclick="logout()">
-      Sair
-    </button>
-
-  </div>
-
-  <div class="card">
-
-    <h3>👤 Meus Dados</h3>
-
-    <div id="guardData"></div>
-
-  </div>
-
-  <div id="guardActions" class="card"></div>
-
-  <div id="myPermitArea"></div>
-
-</section>
-
-
-<!-- PAINEL CORREGEDORIA -->
-<section id="correg" class="screen">
-
-  <div class="topbar">
-
-    <div>
-      <h2>🛡️ Painel da Corregedoria</h2>
-      <span class="badge">
-        GCGM-2026
-      </span>
-    </div>
-
-    <button class="btn secondary" onclick="logout()">
-      Sair
-    </button>
-
-  </div>
-
-
-  <!-- ESTATÍSTICAS -->
-  <div id="stats" class="stats"></div>
-
-
-  <!-- CADASTROS PENDENTES -->
-  <div class="card">
-
-    <h3>📋 Cadastros Pendentes</h3>
-
-    <p class="sub">
-      Analise os novos cadastros enviados pelos guardas.
-    </p>
-
-    <div id="pendingGuards"></div>
-
-  </div>
-
-
-  <!-- PORTES PENDENTES -->
-  <div class="card">
-
-    <h3>🔫 Autorizações de Arma Pendentes</h3>
-
-    <p class="sub">
-      Solicitações de autorização para 9mm — Beretta.
-    </p>
-
-    <div id="pendingPermits"></div>
-
-  </div>
-
-
-  <!-- CADASTROS APROVADOS -->
-  <div class="card">
-
-    <h3>✅ Cadastros Aprovados</h3>
-
-    <div id="approvedGuards"></div>
-
-  </div>
-
-
-  <!-- PORTES APROVADOS -->
-  <div class="card">
-
-    <h3>🔐 Autorizações Aprovadas</h3>
-
-    <div id="approvedPermits"></div>
-
-  </div>
-
-</section>
+<div class="footer">
+    SISTEMA FICTÍCIO PARA ROLEPLAY<br>
+    NÃO POSSUI VALIDADE LEGAL • NÃO É DOCUMENTO OFICIAL
+</div>
 
 </div>
 
-<footer>
-  GCM Sistema RP • USO FICTÍCIO • SEM VALIDADE LEGAL
-</footer>
-
-
 <script>
+/* ================================
+   GCM SISTEMA RP
+   ================================ */
 
-const STORAGE_KEY = "GCM_GUARDAS";
+const STORAGE = "GCM_GUARDAS";
+const SESSION = "GCM_SESSAO";
 
-let sessao =
-  JSON.parse(localStorage.getItem("GCM_SESSAO") || "null");
-
-
-/* =========================
-   NAVEGAÇÃO
-========================= */
-
-function show(id){
-
-  document
-    .querySelectorAll(".screen")
-    .forEach(s => s.classList.remove("active"));
-
-  document
-    .getElementById(id)
-    .classList.add("active");
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-}
-
-
-/* =========================
-   BANCO LOCAL
-========================= */
+/* ---------- BANCO LOCAL ---------- */
 
 function getGuardas(){
-
-  return JSON.parse(
-    localStorage.getItem(STORAGE_KEY) || "[]"
-  );
-
+    try{
+        return JSON.parse(localStorage.getItem(STORAGE)) || [];
+    }catch(e){
+        return [];
+    }
 }
 
-function saveGuardas(guardas){
-
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(guardas)
-  );
-
+function saveGuardas(lista){
+    localStorage.setItem(STORAGE, JSON.stringify(lista));
 }
 
+/* ---------- TELAS ---------- */
 
-/* =========================
-   MENSAGENS
-========================= */
+const telas = [
+    "inicio",
+    "login",
+    "cadastro",
+    "loginCorregedoria",
+    "painelGuarda",
+    "painelCorregedoria"
+];
 
-function mensagem(id,text,tipo=""){
-
-  document.getElementById(id).innerHTML =
-    text
-      ? `<div class="alert ${tipo}">${text}</div>`
-      : "";
-
-}
-
-
-/* =========================
-   SEGURANÇA HTML
-========================= */
-
-function esc(text){
-
-  return String(text || "")
-    .replace(/[&<>"']/g,function(m){
-
-      return {
-        "&":"&amp;",
-        "<":"&lt;",
-        ">":"&gt;",
-        '"':"&quot;",
-        "'":"&#039;"
-      }[m];
-
+function mostrar(id){
+    telas.forEach(t => {
+        document.getElementById(t).classList.add("hidden");
     });
 
+    document.getElementById(id).classList.remove("hidden");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 }
 
+/* ---------- MENSAGENS ---------- */
 
-/* =========================
-   CADASTRO
-========================= */
+function msg(id,text,tipo=""){
+    const el = document.getElementById(id);
 
-function register(){
-
-  const nome =
-    document.getElementById("rNome").value.trim();
-
-  const rg =
-    document.getElementById("rRg").value.trim();
-
-  const cpf =
-    document.getElementById("rCpf").value.trim();
-
-  const user =
-    document.getElementById("rUser").value.trim();
-
-  const pass =
-    document.getElementById("rPass").value;
-
-
-  if(!nome || !rg || !cpf || !user || !pass){
-
-    mensagem(
-      "registerMsg",
-      "Preencha todos os campos."
-    );
-
-    return;
-  }
-
-
-  let guardas = getGuardas();
-
-
-  if(
-    guardas.some(
-      g => g.user.toLowerCase() === user.toLowerCase()
-    )
-  ){
-
-    mensagem(
-      "registerMsg",
-      "Esse usuário já está cadastrado."
-    );
-
-    return;
-  }
-
-
-  if(
-    guardas.some(
-      g => g.cpf === cpf
-    )
-  ){
-
-    mensagem(
-      "registerMsg",
-      "Esse CPF já possui cadastro."
-    );
-
-    return;
-  }
-
-
-  const novoGuarda = {
-
-    id:
-      Date.now().toString(),
-
-    nome:nome,
-
-    rg:rg,
-
-    cpf:cpf,
-
-    user:user,
-
-    pass:pass,
-
-    status:"pending",
-
-    permit:null,
-
-    createdAt:
-      new Date().toISOString()
-
-  };
-
-
-  guardas.push(novoGuarda);
-
-  saveGuardas(guardas);
-
-
-  document
-    .getElementById("rNome").value="";
-
-  document
-    .getElementById("rRg").value="";
-
-  document
-    .getElementById("rCpf").value="";
-
-  document
-    .getElementById("rUser").value="";
-
-  document
-    .getElementById("rPass").value="";
-
-
-  show("registered");
-
+    el.innerHTML =
+        `<div class="message ${tipo}">${text}</div>`;
 }
 
+/* ---------- BOTÕES PRINCIPAIS ---------- */
 
-/* =========================
-   LOGIN GUARDA
-========================= */
+document.getElementById("btnEntrar").addEventListener("click",()=>{
+    document.getElementById("loginUsuario").value="";
+    document.getElementById("loginSenha").value="";
+    document.getElementById("loginMsg").innerHTML="";
+    mostrar("login");
+});
 
-function loginGuard(){
+document.getElementById("btnCadastrar").addEventListener("click",()=>{
+    document.getElementById("cadastroMsg").innerHTML="";
+    mostrar("cadastro");
+});
 
-  const user =
-    document.getElementById("loginUser").value.trim();
+document.getElementById("btnCorregedoria").addEventListener("click",()=>{
+    document.getElementById("corUsuario").value="";
+    document.getElementById("corSenha").value="";
+    document.getElementById("corMsg").innerHTML="";
+    mostrar("loginCorregedoria");
+});
 
-  const pass =
-    document.getElementById("loginPass").value;
+/* ---------- VOLTAR ---------- */
 
+document.getElementById("btnVoltarLogin").addEventListener("click",()=>{
+    mostrar("inicio");
+});
 
-  const guarda =
-    getGuardas().find(
-      g =>
-        g.user === user &&
-        g.pass === pass
+document.getElementById("btnVoltarCadastro").addEventListener("click",()=>{
+    mostrar("inicio");
+});
+
+document.getElementById("btnVoltarCor").addEventListener("click",()=>{
+    mostrar("inicio");
+});
+
+/* ---------- CADASTRO ---------- */
+
+document.getElementById("btnFinalizarCadastro")
+.addEventListener("click",()=>{
+
+    const nome =
+        document.getElementById("cadNome").value.trim();
+
+    const rg =
+        document.getElementById("cadRG").value.trim();
+
+    const cpf =
+        document.getElementById("cadCPF").value.trim();
+
+    const usuario =
+        document.getElementById("cadUsuario").value.trim();
+
+    const senha =
+        document.getElementById("cadSenha").value;
+
+    if(!nome || !rg || !cpf || !usuario || !senha){
+        msg(
+            "cadastroMsg",
+            "Preencha todos os campos.",
+            "error"
+        );
+        return;
+    }
+
+    const guardas = getGuardas();
+
+    const existe = guardas.some(
+        g => g.usuario.toLowerCase() === usuario.toLowerCase()
     );
 
+    if(existe){
+        msg(
+            "cadastroMsg",
+            "Esse usuário já está cadastrado.",
+            "error"
+        );
+        return;
+    }
 
-  if(!guarda){
-
-    mensagem(
-      "loginMsg",
-      "Usuário ou senha incorretos."
-    );
-
-    return;
-  }
-
-
-  if(guarda.status === "pending"){
-
-    mensagem(
-      "loginMsg",
-      "Seu cadastro ainda está aguardando aprovação da Corregedoria."
-    );
-
-    return;
-  }
-
-
-  if(guarda.status === "rejected"){
-
-    mensagem(
-      "loginMsg",
-      "Seu cadastro foi rejeitado pela Corregedoria."
-    );
-
-    return;
-  }
-
-
-  sessao = {
-
-    tipo:"guarda",
-
-    id:guarda.id
-
-  };
-
-
-  localStorage.setItem(
-    "GCM_SESSAO",
-    JSON.stringify(sessao)
-  );
-
-
-  document.getElementById("loginMsg").innerHTML="";
-
-  renderGuard();
-
-}
-
-
-/* =========================
-   LOGIN CORREGEDORIA
-========================= */
-
-function loginCG(){
-
-  const user =
-    document.getElementById("cgUser").value.trim();
-
-  const pass =
-    document.getElementById("cgPass").value;
-
-
-  /* CREDENCIAIS DA CORREGEDORIA */
-
-  if(
-    user === "GCGM-2026" &&
-    pass === "GCGM-2026"
-  ){
-
-    sessao = {
-
-      tipo:"corregedoria"
-
+    const novoGuarda = {
+        id: Date.now().toString() + Math.random().toString(16).slice(2),
+        nome,
+        rg,
+        cpf,
+        usuario,
+        senha,
+        status:"pendente",
+        porte:null,
+        criadoEm:new Date().toLocaleString("pt-BR")
     };
 
+    guardas.push(novoGuarda);
+
+    saveGuardas(guardas);
+
+    document.getElementById("cadNome").value="";
+    document.getElementById("cadRG").value="";
+    document.getElementById("cadCPF").value="";
+    document.getElementById("cadUsuario").value="";
+    document.getElementById("cadSenha").value="";
+
+    msg(
+        "cadastroMsg",
+        "Cadastro enviado com sucesso! Aguarde a análise da Corregedoria.",
+        "ok"
+    );
+});
+
+/* ---------- LOGIN GUARDA ---------- */
+
+function fazerLogin(){
+
+    const usuario =
+        document.getElementById("loginUsuario").value.trim();
+
+    const senha =
+        document.getElementById("loginSenha").value;
+
+    const guardas = getGuardas();
+
+    const guarda = guardas.find(
+        g =>
+            g.usuario.toLowerCase() === usuario.toLowerCase()
+            && g.senha === senha
+    );
+
+    if(!guarda){
+        msg(
+            "loginMsg",
+            "Usuário ou senha incorretos.",
+            "error"
+        );
+        return;
+    }
+
+    if(guarda.status !== "aprovado"){
+        if(guarda.status === "rejeitado"){
+            msg(
+                "loginMsg",
+                "Seu cadastro foi rejeitado pela Corregedoria.",
+                "error"
+            );
+        }else{
+            msg(
+                "loginMsg",
+                "Seu cadastro ainda está pendente de aprovação.",
+                "error"
+            );
+        }
+
+        return;
+    }
 
     localStorage.setItem(
-      "GCM_SESSAO",
-      JSON.stringify(sessao)
+        SESSION,
+        JSON.stringify({
+            tipo:"guarda",
+            id:guarda.id
+        })
     );
 
-
-    document.getElementById("cgMsg").innerHTML="";
-
-    renderCG();
-
-    return;
-  }
-
-
-  mensagem(
-    "cgMsg",
-    "Usuário ou senha da Corregedoria incorretos."
-  );
-
+    abrirPainelGuarda(guarda.id);
 }
 
+document.getElementById("btnFazerLogin")
+.addEventListener("click",fazerLogin);
 
-/* =========================
-   LOGOUT
-========================= */
+/* ---------- ENTER NO LOGIN ---------- */
 
-function logout(){
+document.getElementById("loginSenha")
+.addEventListener("keydown",e=>{
+    if(e.key==="Enter"){
+        fazerLogin();
+    }
+});
 
-  sessao=null;
+/* ---------- PAINEL GUARDA ---------- */
 
-  localStorage.removeItem(
-    "GCM_SESSAO"
-  );
+function abrirPainelGuarda(id){
 
-  show("login");
+    const guarda =
+        getGuardas().find(g=>g.id===id);
 
+    if(!guarda){
+        localStorage.removeItem(SESSION);
+        mostrar("inicio");
+        return;
+    }
+
+    document.getElementById("guardaBemVindo").textContent =
+        `Bem-vindo, ${guarda.nome}`;
+
+    let html = "";
+
+    if(!guarda.porte){
+
+        html += `
+            <div class="item">
+                <h3>Autorização de Armamento</h3>
+                <p>
+                    Você está apto a solicitar uma autorização
+                    de armamento dentro do Roleplay.
+                </p>
+
+                <button
+                    type="button"
+                    class="primary"
+                    id="btnSolicitarPorte">
+                    Solicitar autorização
+                </button>
+            </div>
+        `;
+
+    }else{
+
+        html += `
+            <div class="item">
+                <h3>Solicitação de Armamento</h3>
+                <p>Status da solicitação:</p>
+                <br>
+                <span class="status ${guarda.porte.status}">
+                    ${textoStatus(guarda.porte.status)}
+                </span>
+        `;
+
+        if(guarda.porte.status==="aprovado"){
+
+            html += `
+                <br><br>
+
+                <div class="permit">
+
+                    <div class="title">
+                        AUTORIZAÇÃO DE ARMAMENTO • RP
+                    </div>
+
+                    <div class="weapon">
+                        9mm — Beretta
+                    </div>
+
+                    <div class="line">
+                        <strong>Nome:</strong> ${esc(guarda.nome)}
+                    </div>
+
+                    <div class="line">
+                        <strong>RG:</strong> ${esc(guarda.rg)}
+                    </div>
+
+                    <div class="line">
+                        <strong>CPF:</strong> ${esc(guarda.cpf)}
+                    </div>
+
+                    <div class="line">
+                        <strong>Arma:</strong> 9mm — Beretta
+                    </div>
+
+                    <div class="line">
+                        <strong>Status:</strong>
+                        <span class="status approved">
+                            APROVADO
+                        </span>
+                    </div>
+
+                    <div style="
+                        margin-top:15px;
+                        color:#718096;
+                        font-size:11px;
+                        text-align:center;
+                    ">
+                        DOCUMENTO FICTÍCIO — ROLEPLAY —
+                        SEM VALIDADE LEGAL
+                    </div>
+
+                </div>
+            `;
+
+        }else if(guarda.porte.status==="rejeitado"){
+
+            html += `
+                <p style="margin-top:15px;color:#ff9b9b;">
+                    A solicitação foi rejeitada pela Corregedoria.
+                </p>
+            `;
+        }
+
+        html += `</div>`;
+    }
+
+    document.getElementById("guardaConteudo").innerHTML = html;
+
+    const btn =
+        document.getElementById("btnSolicitarPorte");
+
+    if(btn){
+        btn.addEventListener("click",solicitarPorte);
+    }
+
+    mostrar("painelGuarda");
 }
 
+/* ---------- SOLICITAR PORTE ---------- */
 
-/* =========================
-   GUARDA ATUAL
-========================= */
+function solicitarPorte(){
 
-function currentGuard(){
+    const sessao =
+        JSON.parse(localStorage.getItem(SESSION));
 
-  if(!sessao || !sessao.id)
-    return null;
+    if(!sessao || sessao.tipo!=="guarda") return;
 
-  return getGuardas().find(
-    g => g.id === sessao.id
-  );
+    const guardas = getGuardas();
 
+    const index =
+        guardas.findIndex(g=>g.id===sessao.id);
+
+    if(index===-1) return;
+
+    guardas[index].porte = {
+        tipo:"9mm — Beretta",
+        status:"pendente",
+        solicitadoEm:new Date().toLocaleString("pt-BR")
+    };
+
+    saveGuardas(guardas);
+
+    abrirPainelGuarda(sessao.id);
 }
 
-
-/* =========================
-   ÁREA DO GUARDA
-========================= */
-
-function renderGuard(){
-
-  const g = currentGuard();
-
-  if(!g){
-
-    logout();
-
-    return;
-  }
-
-
-  show("guard");
-
-
-  const status =
-    document.getElementById("guardStatus");
-
-
-  if(g.status === "approved"){
-
-    status.textContent =
-      "CADASTRO APROVADO";
-
-    status.className =
-      "badge approved";
-
-  }else{
-
-    status.textContent =
-      g.status.toUpperCase();
-
-    status.className =
-      "badge pending";
-
-  }
-
-
-  document.getElementById("guardData").innerHTML = `
-
-    <div class="grid">
-
-      <div>
-        <small class="sub">Nome completo</small>
-        <br>
-        <strong>${esc(g.nome)}</strong>
-      </div>
-
-      <div>
-        <small class="sub">RG</small>
-        <br>
-        <strong>${esc(g.rg)}</strong>
-      </div>
-
-      <div>
-        <small class="sub">CPF</small>
-        <br>
-        <strong>${esc(g.cpf)}</strong>
-      </div>
-
-      <div>
-        <small class="sub">Usuário</small>
-        <br>
-        <strong>${esc(g.user)}</strong>
-      </div>
-
-    </div>
-
-  `;
-
-
-  if(g.status !== "approved"){
-
-    document.getElementById("guardActions").innerHTML = `
-
-      <h3>⏳ Cadastro em análise</h3>
-
-      <p class="sub">
-        Aguarde a análise da Corregedoria.
-      </p>
-
-    `;
-
-  }
-
-  else if(!g.permit){
-
-    document.getElementById("guardActions").innerHTML = `
-
-      <h3>🔫 Autorização de Arma</h3>
-
-      <p class="sub">
-        Seu cadastro foi aprovado.
-        Agora você pode solicitar a autorização da arma.
-      </p>
-
-      <div class="actions">
-
-        <button
-          class="btn primary"
-          onclick="requestPermit()">
-
-          Solicitar 9mm — Beretta
-
-        </button>
-
-      </div>
-
-    `;
-
-  }
-
-  else{
-
-    let statusClass =
-      g.permit.status === "approved"
-        ? "approved"
-        : g.permit.status === "rejected"
-          ? "rejected"
-          : "pending";
-
-
-    document.getElementById("guardActions").innerHTML = `
-
-      <h3>🔫 Minha Autorização</h3>
-
-      <p class="${statusClass}">
-        STATUS:
-        ${g.permit.status.toUpperCase()}
-      </p>
-
-      <div class="actions">
-
-        <button
-          class="btn secondary"
-          onclick="renderGuard()">
-
-          Atualizar
-
-        </button>
-
-      </div>
-
-    `;
-
-  }
-
-
-  renderPermit(g);
-
-}
-
-
-/* =========================
-   SOLICITAR PORTE
-========================= */
-
-function requestPermit(){
-
-  let guardas = getGuardas();
-
-  const g =
-    guardas.find(
-      x => x.id === sessao.id
+/* ---------- CORREGEDORIA ---------- */
+
+function entrarCorregedoria(){
+
+    const usuario =
+        document.getElementById("corUsuario").value.trim();
+
+    const senha =
+        document.getElementById("corSenha").value;
+
+    if(
+        usuario !== "GCGM-2026" ||
+        senha !== "GCGM-2026"
+    ){
+        msg(
+            "corMsg",
+            "Usuário ou senha da Corregedoria incorretos.",
+            "error"
+        );
+        return;
+    }
+
+    localStorage.setItem(
+        SESSION,
+        JSON.stringify({
+            tipo:"corregedoria"
+        })
     );
 
-
-  if(!g)
-    return;
-
-
-  if(g.permit){
-
-    return;
-  }
-
-
-  g.permit = {
-
-    status:"pending",
-
-    weapon:"9mm — Beretta",
-
-    createdAt:
-      new Date().toISOString()
-
-  };
-
-
-  saveGuardas(guardas);
-
-  renderGuard();
-
+    carregarCorregedoria();
 }
 
+document.getElementById("btnEntrarCorregedoria")
+.addEventListener("click",entrarCorregedoria);
 
-/* =========================
-   MOSTRAR AUTORIZAÇÃO
-========================= */
+document.getElementById("corSenha")
+.addEventListener("keydown",e=>{
+    if(e.key==="Enter"){
+        entrarCorregedoria();
+    }
+});
 
-function renderPermit(g){
+/* ---------- PAINEL CORREGEDORIA ---------- */
 
-  const area =
-    document.getElementById("myPermitArea");
+function carregarCorregedoria(){
 
+    const guardas = getGuardas();
 
-  area.innerHTML="";
+    const listaGuardas =
+        document.getElementById("listaGuardas");
 
+    const listaPorte =
+        document.getElementById("listaPorte");
 
-  if(
-    !g.permit ||
-    g.permit.status !== "approved"
-  ){
+    /* CADASTROS */
 
-    return;
-  }
+    const pendentes =
+        guardas.filter(g=>g.status==="pendente");
 
+    if(pendentes.length===0){
 
-  area.innerHTML = `
+        listaGuardas.innerHTML =
+            `<div class="empty">
+                Nenhum cadastro pendente.
+            </div>`;
 
-    <div class="permit">
+    }else{
 
-      <div style="font-size:35px">
-        🛡️
-      </div>
+        listaGuardas.innerHTML =
+            pendentes.map(g=>`
 
-      <h2>
-        AUTORIZAÇÃO DE ARMA — RP
-      </h2>
+                <div class="item">
 
-      <p class="sub">
-        GUARDA CIVIL MUNICIPAL
-      </p>
+                    <h3>${esc(g.nome)}</h3>
 
-      <br>
-
-      <div class="permitRow">
-
-        <span>Guarda</span>
-
-        <strong>
-          ${esc(g.nome)}
-        </strong>
-
-      </div>
-
-      <div class="permitRow">
-
-        <span>RG</span>
-
-        <strong>
-          ${esc(g.rg)}
-        </strong>
-
-      </div>
-
-      <div class="permitRow">
-
-        <span>CPF</span>
-
-        <strong>
-          ${esc(g.cpf)}
-        </strong>
-
-      </div>
-
-      <div class="permitRow">
-
-        <span>Arma autorizada</span>
-
-        <strong>
-          ${esc(g.permit.weapon)}
-        </strong>
-
-      </div>
-
-      <div class="permitRow">
-
-        <span>Status</span>
-
-        <strong class="approved">
-          APROVADO
-        </strong>
-
-      </div>
-
-      <br>
-
-      <p class="notice">
-        DOCUMENTO FICTÍCIO — ROLEPLAY —
-        SEM VALIDADE LEGAL.
-      </p>
-
-    </div>
-
-  `;
-
-}
-
-
-/* =========================
-   PAINEL CORREGEDORIA
-========================= */
-
-function renderCG(){
-
-  show("correg");
-
-
-  const guardas = getGuardas();
-
-
-  const pendentes =
-    guardas.filter(
-      g => g.status === "pending"
-    );
-
-
-  const aprovados =
-    guardas.filter(
-      g => g.status === "approved"
-    );
-
-
-  const portesPendentes =
-    guardas.filter(
-      g =>
-        g.permit &&
-        g.permit.status === "pending"
-    );
-
-
-  const portesAprovados =
-    guardas.filter(
-      g =>
-        g.permit &&
-        g.permit.status === "approved"
-    );
-
-
-  document.getElementById("stats").innerHTML = `
-
-    <div class="stat">
-      <span>Cadastros Pendentes</span>
-      <strong>${pendentes.length}</strong>
-    </div>
-
-    <div class="stat">
-      <span>Autorizações Pendentes</span>
-      <strong>${portesPendentes.length}</strong>
-    </div>
-
-    <div class="stat">
-      <span>Cadastros Aprovados</span>
-      <strong>${aprovados.length}</strong>
-    </div>
-
-    <div class="stat">
-      <span>Autorizações Aprovadas</span>
-      <strong>${portesAprovados.length}</strong>
-    </div>
-
-  `;
-
-
-  /* CADASTROS */
-
-  if(pendentes.length){
-
-    document.getElementById("pendingGuards").innerHTML =
-      pendentes
-        .map(g => guardItem(g,true))
-        .join("");
-
-  }else{
-
-    document.getElementById("pendingGuards").innerHTML =
-      `<div class="empty">
-        Nenhum cadastro pendente.
-      </div>`;
-
-  }
-
-
-  /* PORTES */
-
-  if(portesPendentes.length){
-
-    document.getElementById("pendingPermits").innerHTML =
-      portesPendentes
-        .map(g => permitItem(g,true))
-        .join("");
-
-  }else{
-
-    document.getElementById("pendingPermits").innerHTML =
-      `<div class="empty">
-        Nenhuma autorização pendente.
-      </div>`;
-
-  }
-
-
-  /* APROVADOS */
-
-  if(aprovados.length){
-
-    document.getElementById("approvedGuards").innerHTML =
-      aprovados
-        .map(g => guardItem(g,false))
-        .join("");
-
-  }else{
-
-    document.getElementById("approvedGuards").innerHTML =
-      `<div class="empty">
-        Nenhum cadastro aprovado.
-      </div>`;
-
-  }
-
-
-  /* PORTES APROVADOS */
-
-  if(portesAprovados.length){
-
-    document.getElementById("approvedPermits").innerHTML =
-      portesAprovados
-        .map(g => permitItem(g,false))
-        .joi
+                    <p><strong>RG:</strong> ${esc(g.rg)}</p>
+                    
